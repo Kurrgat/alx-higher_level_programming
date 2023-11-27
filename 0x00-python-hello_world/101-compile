@@ -1,0 +1,29 @@
+#!/bin/bash
+# This script compiles the specified Python script and creates a .pyc file
+
+# Check if $PYFILE is set
+if [ -z "$PYFILE" ]; then
+    echo "Error: Environment variable \$PYFILE is not set."
+    exit 1
+fi
+
+# Check if the specified Python file exists
+if [ ! -f "$PYFILE" ]; then
+    echo "Error: File $PYFILE not found."
+    exit 1
+fi
+
+# Extract the base name of the file without the extension
+BASE_NAME=$(basename "$PYFILE" .py)
+
+# Compile the Python script and create the .pyc file
+python3 -m py_compile "$PYFILE"
+
+# Print a message indicating that the compilation is done
+echo "Compiling $PYFILE ..."
+
+# Rename the compiled file to match the original file name with .pyc extension
+mv "__pycache__/$BASE_NAME.cpython-*.pyc" "$BASE_NAME.pyc"
+
+# Clean up the __pycache__ directory
+rm -rf "__pycache__"
