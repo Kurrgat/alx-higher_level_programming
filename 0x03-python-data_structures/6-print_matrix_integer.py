@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
     # Print the matrix
     print_matrix_integer(matrix)
-    
+
     print("--")
 
     # Print an empty matrix
