@@ -71,6 +71,7 @@ class Node:
         else:
             self.__next_node = value
 
+
 class SinglyLinkedList:
     """
     Class SinglyLinkedList for a singly linked list.
@@ -83,7 +84,8 @@ class SinglyLinkedList:
 
     def sorted_insert(self, value):
         """
-        Inserts a new Node into the correct sorted position in the list (increasing order).
+        Inserts a new Node into the correct sorted position in the list
+        (increasing order).
 
         Parameters:
             - value: The value to insert.
@@ -94,7 +96,8 @@ class SinglyLinkedList:
             self.head = new_node
         else:
             current = self.head
-            while current.next_node is not None and current.next_node.data < value:
+            while current.next_node is not None and
+            current.next_node.data < value:
                 current = current.next_node
             new_node.next_node = current.next_node
             current.next_node = new_node
@@ -112,6 +115,7 @@ class SinglyLinkedList:
             result += str(current.data) + "\n"
             current = current.next_node
         return result.rstrip("\n")
+
 
 if __name__ == "__main__":
     # Test the SinglyLinkedList class
