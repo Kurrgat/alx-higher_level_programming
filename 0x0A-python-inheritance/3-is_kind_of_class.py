@@ -1,8 +1,7 @@
-#!/usr/bin/python 3
+#!/usr/bin/python3
 """
-checks if an object is an instance of, or inherited from, a specified class.
+Checks if an object is an instance of, or inherited from, a specified class
 """
-
 
 def is_kind_of_class(obj, a_class):
     """
@@ -11,6 +10,6 @@ def is_kind_of_class(obj, a_class):
 
     Args:
         obj: Object to check.
-        a_class: Class to compare against
+        a_class: Class to compare against.
     """
     return isinstance(obj, a_class)
