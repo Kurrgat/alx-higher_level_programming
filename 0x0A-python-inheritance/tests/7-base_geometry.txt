@@ -1,0 +1,6 @@
+area()
+my_int 12
+width 89
+name John
+age 0
+distance -4
