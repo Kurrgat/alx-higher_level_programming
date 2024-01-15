@@ -1,105 +1,70 @@
 #!/usr/bin/python3
-"""
-This module contains a Square class, which inherits from the Rectangle class.
-"""
-
+"""Defines a Square class."""
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """
-    Represents a square, inheriting from the Rectangle class.
-    """
+    """Represent a square."""
 
     def __init__(self, size, x=0, y=0, id=None):
-        """
-        Initializes a square.
+        """Initialize a new Square instance.
 
-        Parameters:
-        - size (int): Side length of the square.
-        - x (int): X-coordinate of the square.
-        - y (int): Y-coordinate of the square.
-        - id (int): Unique identifier for the square.
+        Args:
+            size (int): The size of the new Square.
+            x (int): The x coordinate of the new Square.
+            y (int): The y coordinate of the new Square.
+            id (int): The identity of the new Square.
         """
-        self.size = size
-        self.x = x
-        self.y = y
-        self.id = None
         super().__init__(size, size, x, y, id)
-
-    def __str__(self):
-        """
-        Defines a format for the string representation of the class.
-
-        Returns:
-        - str: String representation of the square.
-        """
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
 
     @property
     def size(self):
-        """
-        Gets the value of the size attribute.
-
-        Returns:
-        - int: Size of the square.
-        """
-        return self.__width
+        """Get or set the size of the Square."""
+        return self.width
 
     @size.setter
     def size(self, value):
-        """
-        Sets the value for the size attribute.
-
-        Parameters:
-        - value (int): New size value.
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        if value <= 0:
-            raise ValueError("width must be > 0")
-        self.__width = value
-        self.__height = value
+        """Set the size of the Square."""
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
-        """
-        Updates attributes of an instance.
+        """Update the Square attributes.
 
-        Parameters:
-        - args (tuple): Variable length argument list.
-        - kwargs (dict): Arbitrary keyword arguments.
+        Args:
+            *args (int): New attribute values (id, size, x, y).
+            **kwargs (dict): New key/value pairs of attributes.
         """
-        if args is not None and len(args) != 0:
-            if len(args) >= 1:
-                if type(args[0]) != int and args[0] is not None:
-                    raise TypeError("id must be an integer")
-                self.id = args[0]
-            if len(args) > 1:
-                self.size = args[1]
-            if len(args) > 2:
-                self.x = args[2]
-            if len(args) > 3:
-                self.y = args[3]
-        else:
-            for key, value in kwargs.items():
-                if key == "id":
-                    if type(value) != int and value is not None:
-                        raise TypeError("id must be an integer")
-                    self.id = value
-                if key == "size":
-                    self.size = value
-                if key == "x":
-                    self.x = value
-                if key == "y":
-                    self.y = value
+        if args and len(args) != 0:
+            for i, arg in enumerate(args):
+                if i == 0:
+                    self.id = arg if arg is not None else self.id
+                elif i == 1:
+                    self.size = arg
+                elif i == 2:
+                    self.x = arg
+                elif i == 3:
+                    self.y = arg
+        elif kwargs and len(kwargs) != 0:
+            for k, v in kwargs.items():
+                if k == "id":
+                    self.id = v if v is not None else self.id
+                elif k == "size":
+                    self.size = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
 
     def to_dictionary(self):
-        """
-        Returns the dictionary representation of a Square.
+        """Return the dictionary representation of the Square."""
+        return {
+            "id": self.id,
+            "size": self.width,
+            "x": self.x,
+            "y": self.y
+        }
 
-        Returns:
-        - dict: Dictionary representation of the square.
-        """
-        obj_dictionary = {'id': self.id, 'size': self.size,
-                          'x': self.x, 'y': self.y}
-        return obj_dictionary
+    def __str__(self):
+        """Return the string representation of the Square."""
+        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y, self.width)
