@@ -5,6 +5,7 @@ This module contains a Square class, which inherits from the Rectangle class.
 
 from models.rectangle import Rectangle
 
+
 class Square(Rectangle):
     """
     Represents a square, inheriting from the Rectangle class.
@@ -99,5 +100,6 @@ class Square(Rectangle):
         Returns:
         - dict: Dictionary representation of the square.
         """
-        obj_dictionary = {'id': self.id, 'size': self.size, 'x': self.x, 'y': self.y}
+        obj_dictionary = {'id': self.id, 'size': self.size,
+                          'x': self.x, 'y': self.y}
         return obj_dictionary
