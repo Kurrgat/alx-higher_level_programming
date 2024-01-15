@@ -13,7 +13,8 @@ import turtle
 class Base:
     """
     Represents the base class for all created classes.
-    Provides common functionality such as JSON serialization, file handling, and drawing.
+    Provides common functionality such as JSON serialization,
+    file handling, and drawing.
     """
 
     __nb_objects = 0
@@ -44,7 +45,8 @@ class Base:
         """
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        if not isinstance(list_dictionaries, list) or not all(isinstance(i, dict) for i in list_dictionaries):
+        if not isinstance(list_dictionaries, list)
+        or not all(isinstance(i, dict) for i in list_dictionaries):
             raise TypeError("list_dictionaries must be a list of dictionaries")
         return json.dumps(list_dictionaries)
 
@@ -160,7 +162,8 @@ class Base:
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([k, int(v)] for k, v in d.items()) for d in list_dicts]
+                list_dicts = [dict([k, int(v)] for k, v in d.items())
+                              for d in list_dicts]
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
