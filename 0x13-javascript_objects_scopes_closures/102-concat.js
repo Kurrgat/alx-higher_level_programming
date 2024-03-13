@@ -13,7 +13,7 @@ const fileC = process.argv[4];
 try {
   const contentA = fs.readFileSync(fileA, 'utf-8');
   const contentB = fs.readFileSync(fileB, 'utf-8');
-  
+
   const concatenatedContent = contentA + contentB;
 
   fs.writeFileSync(fileC, concatenatedContent);
