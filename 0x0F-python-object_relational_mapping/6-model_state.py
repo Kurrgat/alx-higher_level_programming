@@ -1,4 +1,3 @@
-guillaume@ubuntu:~/0x0F$ cat 6-model_state.py
 #!/usr/bin/python3
 """Start link class to table in database 
 """
