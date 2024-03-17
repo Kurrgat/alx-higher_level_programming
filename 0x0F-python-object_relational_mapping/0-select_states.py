@@ -14,7 +14,8 @@ if __name__ == "__main__":
 
     # Connect to MySQL server
     try:
-        conn = MySQLdb.connect(host="localhost", port=3306, user=username, passwd=password, db=database)
+        conn = MySQLdb.connect(host="localhost", port=3306, user=username,
+                               passwd=password, db=database)
         cursor = conn.cursor()
 
         # Query to select all states from the states table
